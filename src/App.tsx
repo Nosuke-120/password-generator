@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+  const password_base = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  // const [targetLength, setTargetLength] = useState(null)
+  const [result, setResult] = useState('');
+
+  // const handleLength = (e) => {
+  //   setTargetLength(e.target.value)
+  // }
+
+  // const updateResult = () => {
+  //   setResult(targetLength);
+  // }
+
+  const generatePassword = () => {
+    let password = '';
+    for (let i = 0; i <= 20; i++) {
+      password += password_base.charAt(Math.floor(Math.random() * password_base.length));
+    }
+    setResult(password);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h3>Password Generator</h3>
+      <div>{result}</div>
+      <label>Length</label>
+      <div>
+        <input type="text"/>
+      </div>
+      <div>
+        <label className="check_lb"><input type="checkbox" />Include Uppercase</label>
+        <label className="check_lb"><input type="checkbox" />Include Lowercase</label>
+        <label className="check_lb"><input type="checkbox" />Include Numbers</label>
+        <label className="check_lb"><input type="checkbox" />Include Symbols</label>
+      </div>
+      <button onClick={generatePassword}>GENERATE PASSWORD</button>
     </div>
   );
 }
