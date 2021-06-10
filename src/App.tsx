@@ -5,15 +5,12 @@ const App = () => {
   const password_base = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   // const [targetLength, setTargetLength] = useState(null)
-  const [result, setResult] = useState('');
-
-  // const handleLength = (e) => {
-  //   setTargetLength(e.target.value)
-  // }
-
-  // const updateResult = () => {
-  //   setResult(targetLength);
-  // }
+  const [password, setPassword] = useState('');
+  const [passwordLength, setPasswordLength] = useState(20);
+  const [includeUpperCase, setIncludeUpperCase] = useState(false);
+  const [includeLowerCase, setIncludeLowerCase] = useState(false);
+  const [includeNumbers, setIncludeNumbers] = useState(false);
+  const [includeSymbols, setIncludeSymbols] = useState(false);
 
   const generatePassword = () => {
     let password = '';
@@ -26,18 +23,66 @@ const App = () => {
   return (
     <div>
       <h3>Password Generator</h3>
-      <div>{result}</div>
+      <div>{password}</div>
       <label>Length</label>
       <div>
-        <input type="text"/>
+        <label>Password Length</label>
+          <input
+            defaultValue={passwordLength}
+            type="number"
+            onChange={(e) => setPasswordLength(e.target.value)}
+            min='10'
+            max='20'
+          />
+      </div>
+
+      <div className="check_lb">
+        <label>Password Length</label>
+          <input
+            defaultChecked={includeUpperCase}
+            type="checkbox"
+            onChange={(e) => setIncludeUpperCase(e.target.checked)}
+          />
+      </div>
+
+      <div className="check_lb">
+        <label>Include Uppercase Letters</label>
+          <input
+            defaultChecked={includeLowerCase}
+            type="checkbox"
+            onChange={(e) => setIncludeLowerCase(e.target.checked)}
+          />
+      </div>
+
+      <div className="check_lb">
+        <label>Include Lowercase Letters</label>
+          <input
+            defaultChecked={includeLowerCase}
+            type="checkbox"
+            onChange={(e) => setIncludeLowerCase(e.target.checked)}
+          />
+      </div>
+
+      <div className="check_lb">
+        <label>Include Numbers</label>
+          <input
+            defaultChecked={includeNumbers}
+            type="checkbox"
+            onChange={(e) => setIncludeNumbers(e.target.checked)}
+          />
+      </div>
+
+      <div className="check_lb">
+        <label>Include Symbols</label>
+          <input
+            defaultChecked={includeSymbols}
+            type="checkbox"
+            onChange={(e) => setIncludeSymbols(e.target.checked)}
+          />
       </div>
       <div>
-        <label className="check_lb"><input type="checkbox" />Include Uppercase</label>
-        <label className="check_lb"><input type="checkbox" />Include Lowercase</label>
-        <label className="check_lb"><input type="checkbox" />Include Numbers</label>
-        <label className="check_lb"><input type="checkbox" />Include Symbols</label>
+        <button onClick={generatePassword}>GENERATE PASSWORD</button>
       </div>
-      <button onClick={generatePassword}>GENERATE PASSWORD</button>
     </div>
   );
 }
