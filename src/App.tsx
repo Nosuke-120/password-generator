@@ -12,13 +12,6 @@ const App = () => {
   const [includeNumbers, setIncludeNumbers] = useState(false);
   const [includeSymbols, setIncludeSymbols] = useState(false);
 
-  const generatePassword = () => {
-    let password = '';
-    for (let i = 0; i <= 20; i++) {
-      password += password_base.charAt(Math.floor(Math.random() * password_base.length));
-    }
-    setResult(password);
-  }
 
   return (
     <div>
