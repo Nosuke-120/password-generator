@@ -25,7 +25,7 @@ const App = () => {
           type="number"
           onChange={(e) => setPasswordLength(e.target.value)}
           min='10'
-          max='30'
+          max='20'
         />
       </div>
 
