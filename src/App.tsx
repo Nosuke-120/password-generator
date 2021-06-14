@@ -49,7 +49,6 @@ const App = () => {
     <div>
       <h3>Password Generator</h3>
       <div>{password}</div>
-      <label>Length</label>
       <div>
         <label>Password Length</label>
         <input
@@ -62,20 +61,11 @@ const App = () => {
       </div>
 
       <div className="check_lb">
-        <label>Password Length</label>
+        <label>Include Uppercase Letters</label>
         <input
           defaultChecked={includeUpperCase}
           type="checkbox"
           onChange={(e) => setIncludeUpperCase(e.target.checked)}
-        />
-      </div>
-
-      <div className="check_lb">
-        <label>Include Uppercase Letters</label>
-        <input
-          defaultChecked={includeLowerCase}
-          type="checkbox"
-          onChange={(e) => setIncludeLowerCase(e.target.checked)}
         />
       </div>
 
