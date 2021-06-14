@@ -16,7 +16,7 @@ const App = () => {
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'
   const specialCharacters = "!'^+%&/()=?_#$½§{[]}|;:>÷`<.*-@é"
 
-  const handleGeneratePassword = (e) => {
+  const handleGeneratePassword = () => {
     let charcterList = '';
     if (includeUpperCase) {
       charcterList += upperCaseLetters;
@@ -34,7 +34,7 @@ const App = () => {
     setPassword(createPassword(charcterList));
   }
 
-  const createPassword = (charcterList) => {
+  const createPassword = (charcterList: string) => {
     let password = '';
     const charcterListLength = charcterList.length;
 
@@ -55,7 +55,7 @@ const App = () => {
         <input
           defaultValue={passwordLength}
           type="number"
-          onChange={(e) => setPasswordLength(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordLength(Number(e.target.value))}
           min='10'
           max='20'
         />
