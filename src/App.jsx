@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './App.css';
 
 const App = () => {
-  const password_base = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   // const [targetLength, setTargetLength] = useState(null)
   const [password, setPassword] = useState('');
@@ -12,6 +11,39 @@ const App = () => {
   const [includeNumbers, setIncludeNumbers] = useState(false);
   const [includeSymbols, setIncludeSymbols] = useState(false);
 
+  const numbers = '0123456789'
+  const upperCaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'
+  const specialCharacters = "!'^+%&/()=?_#$½§{[]}|;:>÷`<.*-@é"
+
+  const handleGeneratePassword = (e) => {
+    let charcterList = '';
+    if (includeUpperCase) {
+      charcterList += upperCaseLetters;
+    }
+    if (includeLowerCase) {
+      charcterList += lowerCaseLetters;
+    }
+    if (includeNumbers) {
+      charcterList += numbers;
+    }
+    if (includeSymbols) {
+      charcterList += specialCharacters;
+    }
+
+    setPassword(createPassword(charcterList));
+  }
+
+  const createPassword = (charcterList) => {
+    let password = '';
+    const charcterListLength = charcterList.length;
+
+    for (let i = 0; i < passwordLength; i++) {
+      const charlistIndex = Math.round(Math.random() * charcterListLength);
+      password += charcterList.charAt(charlistIndex);
+    }
+    return password;
+  }
 
   return (
     <div>
@@ -74,7 +106,7 @@ const App = () => {
         />
       </div>
       <div>
-        <button onClick={generatePassword}>GENERATE PASSWORD</button>
+        <button onClick={handleGeneratePassword}>GENERATE PASSWORD</button>
       </div>
     </div>
   );
