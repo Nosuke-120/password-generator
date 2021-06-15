@@ -17,6 +17,16 @@ const App = () => {
   const specialCharacters = "!'^+%&/()=?_#$½§{[]}|;:>÷`<.*-@é"
 
   const handleGeneratePassword = () => {
+    if (
+      !includeUpperCase &&
+      !includeLowerCase &&
+      !includeNumbers &&
+      !includeSymbols
+    ) {
+      alert('Select atleast one option');
+      return
+    }
+
     let charcterList = '';
     if (includeUpperCase) {
       charcterList += upperCaseLetters;
