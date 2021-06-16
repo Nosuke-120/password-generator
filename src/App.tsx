@@ -1,15 +1,20 @@
 import React, {useState} from 'react';
 import './App.css';
+import PasswordLength from './components/PasswordLength';
+import UppercaseInput from './components/UppercaseInput';
+import LowercaseInput from './components/LowercaseInput';
+import NumberInput from './components/NumberInput';
+import SymbolInput from './components/SymbolInput';
 
 const App = () => {
 
   // const [targetLength, setTargetLength] = useState(null)
-  const [password, setPassword] = useState('');
-  const [passwordLength, setPasswordLength] = useState(20);
-  const [includeUpperCase, setIncludeUpperCase] = useState(false);
-  const [includeLowerCase, setIncludeLowerCase] = useState(false);
-  const [includeNumbers, setIncludeNumbers] = useState(false);
-  const [includeSymbols, setIncludeSymbols] = useState(false);
+  const [password, setPassword] = useState<string>('');
+  const [passwordLength, setPasswordLength] = useState<number>(20);
+  const [includeUpperCase, setIncludeUpperCase] = useState<boolean>(false);
+  const [includeLowerCase, setIncludeLowerCase] = useState<boolean>(false);
+  const [includeNumbers, setIncludeNumbers] = useState<boolean>(false);
+  const [includeSymbols, setIncludeSymbols] = useState<boolean>(false);
 
   const numbers = '0123456789'
   const upperCaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -24,6 +29,7 @@ const App = () => {
       !includeSymbols
     ) {
       alert('Select atleast one option');
+      setPassword('');
       return
     }
 
@@ -59,52 +65,11 @@ const App = () => {
     <div>
       <h3>Password Generator</h3>
       <div>{password}</div>
-      <div>
-        <label>Password Length</label>
-        <input
-          defaultValue={passwordLength}
-          type="number"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordLength(Number(e.target.value))}
-          min='10'
-          max='20'
-        />
-      </div>
-
-      <div className="check_lb">
-        <label>Include Uppercase Letters</label>
-        <input
-          defaultChecked={includeUpperCase}
-          type="checkbox"
-          onChange={(e) => setIncludeUpperCase(e.target.checked)}
-        />
-      </div>
-
-      <div className="check_lb">
-        <label>Include Lowercase Letters</label>
-        <input
-          defaultChecked={includeLowerCase}
-          type="checkbox"
-          onChange={(e) => setIncludeLowerCase(e.target.checked)}
-        />
-      </div>
-
-      <div className="check_lb">
-        <label>Include Numbers</label>
-        <input
-          defaultChecked={includeNumbers}
-          type="checkbox"
-          onChange={(e) => setIncludeNumbers(e.target.checked)}
-        />
-      </div>
-
-      <div className="check_lb">
-        <label>Include Symbols</label>
-        <input
-          defaultChecked={includeSymbols}
-          type="checkbox"
-          onChange={(e) => setIncludeSymbols(e.target.checked)}
-        />
-      </div>
+      <PasswordLength passwordLength={passwordLength} setPasswordLength={setPasswordLength}/>
+      <UppercaseInput includeUpperCase={includeUpperCase} setIncludeUpperCase={setIncludeUpperCase}/>
+      <LowercaseInput includeLowerCase={includeLowerCase} setIncludeLowerCase={setIncludeLowerCase}/>
+      <NumberInput includeNumbers={includeNumbers} setIncludeNumbers={setIncludeNumbers}/>
+      <SymbolInput includeSymbols={includeSymbols} setIncludeSymbols={setIncludeSymbols}/>
       <div>
         <button onClick={handleGeneratePassword}>GENERATE PASSWORD</button>
       </div>
