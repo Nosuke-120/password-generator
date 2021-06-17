@@ -8,7 +8,7 @@ interface Props {
 const LowercaseInput:React.VFC<Props> = ({includeLowerCase, setIncludeLowerCase}) => {
   
   return (
-    <div className="check_lb">
+    <div>
       <label>Include Lowercase Letters</label>
       <input
         defaultChecked={includeLowerCase}

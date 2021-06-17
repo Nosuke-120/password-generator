@@ -62,7 +62,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className='wrap'>
       <h3>Password Generator</h3>
       <div>{password}</div>
       <PasswordLength passwordLength={passwordLength} setPasswordLength={setPasswordLength}/>

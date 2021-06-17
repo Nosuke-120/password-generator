@@ -1,3 +1,10 @@
-.check_lb {
-  display:block;
+body {
+  width: 100%;
+  text-align: center;
+}
+
+.wrap  {
+  width: 960px;
+  margin: 0 auto;
+  text-align: left;
 }

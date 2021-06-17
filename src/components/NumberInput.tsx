@@ -8,7 +8,7 @@ interface Props {
 const NumberInput:React.VFC<Props> = ({includeNumbers, setIncludeNumbers}) => {
   
   return (
-    <div className="check_lb">
+    <div>
       <label>Include Numbers</label>
       <input
         defaultChecked={includeNumbers}

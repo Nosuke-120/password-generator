@@ -8,7 +8,7 @@ interface Props {
 const SymbolInput:React.VFC<Props> = ({includeSymbols, setIncludeSymbols}) => {
   
   return (
-    <div className="check_lb">
+    <div>
       <label>Include Symbols</label>
       <input
         defaultChecked={includeSymbols}
